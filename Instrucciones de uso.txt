@@ -1,0 +1,4 @@
+Convertidor de Thompson 
+La exprecion recular sera siemrpre dicidadde entre "()" y las operacionessera siemrpres dividida 
+entre "()" ejemplo:(((a|(b.c))*.c)+)
+
