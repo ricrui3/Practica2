@@ -73,7 +73,7 @@ public:
 };
 // Concatencaion
 //  concatenacion
-AFN concat(AFN a, AFN b) {
+AFN concat(AFN a, AFN b, int opc) {
 	AFN resultado;
 	resultado.set_vertex(a.get_vertex_count() + b.get_vertex_count());
 	int i;
@@ -84,11 +84,15 @@ AFN concat(AFN a, AFN b) {
 		resultado.set_transicion(new_trans.vertex_inicio, new_trans.vertex_final, new_trans.trans_simbolo);
 	}
 
-	resultado.set_transicion(a.get_final_estado(), a.get_vertex_count(), 'e');   //Estado Epsilon
+	if(opc != 1)
+		resultado.set_transicion(a.get_final_estado(), a.get_vertex_count(), 'e');   //Estado Epsilon
 
 	for(i = 0; i < b.trancisiones.size(); i++) {
 		new_trans = b.trancisiones.at(i);
-		resultado.set_transicion(new_trans.vertex_inicio + a.get_vertex_count(), new_trans.vertex_final + a.get_vertex_count(), new_trans.trans_simbolo);
+		if(opc == 1)
+			resultado.set_transicion(new_trans.vertex_inicio + a.get_vertex_count()-1, new_trans.vertex_final + a.get_vertex_count(), new_trans.trans_simbolo);
+		else
+			resultado.set_transicion(new_trans.vertex_inicio + a.get_vertex_count(), new_trans.vertex_final + a.get_vertex_count(), new_trans.trans_simbolo);
 	}
 
 	resultado.set_final_estado(a.get_vertex_count() + b.get_vertex_count() - 1);
@@ -228,7 +232,7 @@ AFN leer_AFN(string re) {
 						operands.pop();
 						op1 = operands.top();
 						operands.pop();
-						operands.push(concat(op1, op2));
+						operands.push(concat(op1, op2, 1));
 					}
 				} else if(op_inic == '|'){
 					seleccions.assign(op_fin + 1, AFN());
