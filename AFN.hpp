@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <cstdlib>
+#include <fstream>
 
 
 
@@ -73,8 +74,7 @@ public:
 		cout<<"\n";
 
 		// open a file in write mode.
-		ofstream outfile;
-		outfile.open("Grafo.dot");
+		ofstream outfile("Grafo.dot");
 
 		// write inputted data into the file.
 		outfile << "digraph AFD{" << endl;

@@ -49,7 +49,7 @@ int main() {
     AFN a_or_b = or_seleccion(selecion, nume_seleciones);
     a_or_b.display();
 
-    ifstream infile("/home/mrubik/github/Practica2/ExpresionRegular.txt");
+    ifstream infile("ExpresionRegular.txt");
     char buffer[1000000];
     infile >> buffer;
     cout << "La cadena es: ";
