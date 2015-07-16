@@ -60,13 +60,14 @@ public:
 
 	void display() {
 		trans new_trans;
-		cout<<"\n";
+		cout << endl;
 		for(int i = 0; i < trancisiones.size(); i++) {
 			new_trans = trancisiones.at(i);
-			cout<<"q"<<new_trans.vertex_inicio<<" --> q"<<new_trans.vertex_final<<"  : Simbolo - "<<new_trans.trans_simbolo<<endl;
+			cout<<"\t\tq"<<new_trans.vertex_inicio<<" --> q"<<new_trans.vertex_final<<"  : Simbolo - "
+				<<new_trans.trans_simbolo<<endl;
 		}
-		cout<<"\nEl estado inicial es q0"<<endl;
-		cout<<"\nEl estado final es q"<<get_final_estado()<<endl;
+		cout<<"\t\tEl estado inicial es q0"<<endl;
+		cout<<"\t\tEl estado final es q"<<get_final_estado()<<endl;
 	}
 
 	void displayEspecial() {
