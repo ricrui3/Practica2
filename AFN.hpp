@@ -67,6 +67,41 @@ public:
 		cout<<"\nEl estado inicial es q0"<<endl;
 		cout<<"\nEl estado final es q"<<get_final_estado()<<endl;
 	}
+
+	void displayEspecial() {
+		trans new_trans;
+		cout<<"\n";
+
+		// open a file in write mode.
+		ofstream outfile;
+		outfile.open("Grafo.dot");
+
+		// write inputted data into the file.
+		outfile << "digraph AFD{" << endl;
+		outfile << "\tnode [shape = circle];" << endl;
+
+		outfile << "\tq0" << "[shape = doublecircle];" << endl;
+		outfile << "\tqi [shape = point ];" << endl;
+
+		outfile << "\n\t" << "qi -> q0"<< endl;
+		for(int i = 0; i < trancisiones.size(); i++) {
+			new_trans = trancisiones.at(i);
+			cout << "q" << new_trans.vertex_inicio << " -> q" << new_trans.vertex_final << "  : Simbolo - "
+				<< new_trans.trans_simbolo<<endl;
+			outfile << "\t" << "q" << new_trans.vertex_inicio << " -> q" << new_trans.vertex_final
+				<< "[label =" << new_trans.trans_simbolo <<"];" << endl;
+		}
+
+		outfile << "}";
+		// close the opened file.
+		outfile.close();
+
+		system("dot Grafo.dot -Tpng > Grafo.png");
+		system("shotwell Grafo.png& ");
+
+		cout<<"\nEl estado inicial es q0"<<endl;
+		cout<<"\nEl estado final es q"<<get_final_estado()<<endl;
+	}
 	
 
 

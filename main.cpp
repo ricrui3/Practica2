@@ -64,7 +64,7 @@ int main() {
 
     cout<<"Por ejemplo : \n Para la expresion regular "<<pch<<"\n"<<endl;
 
-    prueba_AFN.display();
+    prueba_AFN.displayEspecial();
 
     return 0;
 }
