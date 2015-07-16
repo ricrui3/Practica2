@@ -1,4 +1,4 @@
 Convertidor de Thompson 
-La exprecion recular sera siemrpre dicidadde entre "()" y las operacionessera siemrpres dividida 
+La expresion regular sera siempre encerrada entre "()" y las operaciones seran siempres divididas
 entre "()" ejemplo:(((a|(b.c))*.c)+)
 

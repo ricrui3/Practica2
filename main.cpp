@@ -1,4 +1,5 @@
 #include <string.h>
+#include <fstream>
 #include "AFN.hpp"
 
 using namespace std;
@@ -6,12 +7,12 @@ using namespace std;
 void token(char* str) {
     char * pch;
 
-    pch = strtok (str,"ESCRIBIR_TODA_LA_EXPRECION_REGULAR_ENTRE_PARENTESIS_EXPRECION_REGULAR : ,");
+    pch = strtok (str,"ESCRIBIR_TODA_LA_EXPRECION_REGULAR_ENTRE_PARENTESIS:EXPRECION_REGULAR:");
 
     while (pch != NULL)
     {
 
-        pch = strtok (NULL, " ESCRIBIR_TODA_LA_EXPRECION_REGULAR_ENTRE_PARENTESIS_EXPRECION_REGULAR : , - ");
+        pch = strtok (NULL, "ESCRIBIR_TODA_LA_EXPRECION_REGULAR_ENTRE_PARENTESIS:EXPRECION_REGULAR:");
 
     }
 
@@ -19,8 +20,8 @@ void token(char* str) {
 
 int main() {
     cout<<"\n\nAlgoritmo de construccion de Thompson mediante una expresion regular como entrada "
-    <<"y devuelve su correspondiente Automata Finito no determinista\n\n";
-    cout<<"\n\nLos elementos basicos para la construccion de la AFN son : \n";
+    <<"y devuelve su correspondiente Automata Finito no determinista\n";
+    cout<<"\nLos elementos basicos para la construccion de la AFN son : \n";
 
 
     AFN a, b;
@@ -62,17 +63,14 @@ int main() {
     AFN a_or_b = or_seleccion(selecion, nume_seleciones);
     a_or_b.display();
 
-
-
-
-    FILE *fp;
-    char buffer[100000];
-    fp = fopen ( "ExprecionRegular.txt", "r+" );
-    fscanf(fp, "%s" ,buffer);
+    ifstream infile("ExpresionRegular.txt");
+    char buffer[1000000];
+    infile >> buffer;
+    cout << "La cadena es:";
     cout << buffer << endl;
-
+    infile.close();
     token(buffer);
-    fclose ( fp );
+
     AFN prueba_AFN = leer_AFN(buffer);  //-----------------------------leer expresion regular
 
     cout<<"Por ejemplo : \n Para la expresion regular "<<buffer<<" -- \n"<<endl;
